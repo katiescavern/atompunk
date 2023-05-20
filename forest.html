@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Atompunk || Forest</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Atompunk || Forest</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<h1>The Decayed Forest</h1>
-<button id="riverClick" onclick="riverButton()">Lost River</button>
-
-<div id="riverTravel" style="display: none;">
-<p>COMING SOON(ish)</p>
-</div>
-<div id="forestSection">
-<div id="cuttingTrees">
-<button id="treeButton" onclick="treeCut()">cut down trees</button>
-<p id=logCount></p>
-</div>
-<div id="cuttingWood">
-<button id="logButton" onclick="logCut()"></button>
-<p id="woodCount"></p>
-</div>
-<div id="warning">
-<p id="warningText"></p>
-</div>
-</div>
-<script src="atompunk.js"></script>
-
+    <h1>The Decayed Forest</h1>
+    <div id="sectionButtons">
+    </div>
+    <div id="riverTravel" style="display: none;">
+        <button id="forestClick" onclick="forestButton()">Decayed Forest</button>
+        <div id="fishgame">
+            <button id="startFish" onclick="fishGame()">start fishing</button>
+            <button id="fishButton1" onclick="catchFish(this)">fish</button>
+            <button id="fishButton2" onclick="catchFish(this)">fish</button>
+            <button id="fishButton3" onclick="catchFish(this)">fish</button>
+            <p id="fishCounter"></p>
+        </div>
+    </div>
+    <div id="forestSection">
+        <button id="riverClick" onclick="riverButton()">Lost River</button>
+        <div id="cuttingTrees">
+            <button id="treeButton" onclick="treeCut()">cut down trees</button>
+            <p id="logCount"></p>
+        </div>
+        <div id="cuttingWood">
+            <button id="logButton" onclick="logCut()"></button>
+            <p id="woodCount"></p>
+        </div>
+        <div id="warning">
+            <p id="warningText"></p>
+        </div>
+    </div>
+    <script src="atompunk.js"></script>
 </body>
 </html>

@@ -9,12 +9,48 @@ var riverGate = 0;
 var logButton = document.getElementById("logButton");
 logButton.style.display = "none";
 var riverClick = document.getElementById("riverClick");
+var forestClick = document.getElementById("forestClick");
+var forestDisplay = document.getElementById("forestSection");
+var riverDisplay = document.getElementById("riverTravel");
+var sectionButtons = document.getElementById("sectionButtons");
+
+//fish spam
+var fishButton1 = document.getElementById("fishButton1")
+var fishButton2 = document.getElementById("fishButton2")
+var fishButton3 = document.getElementById("fishButton3")
+//we finna fish, and we finna love it
+// Fish count
+var fishCount = 0;
+var fishCounter = document.getElementById("fishCounter");
+
+// Function to catch the fish
+function catchFish(button) {
+  // Disable fish buttons after a fish is caught
+  fishButton1.disabled = true;
+  fishButton2.disabled = true;
+  fishButton3.disabled = true;
+
+
+  // Check if the clicked button contains the fish
+  if (button.id === "fishButton" + (Math.floor(Math.random() * 3) + 1)) {
+    fishCount++;
+    fishCounter.textContent = "Fish Count: " + fishCount;
+  }
+
+  // Enable fish buttons again
+  fishButton1.disabled = false;
+  fishButton2.disabled = false;
+  fishButton3.disabled = false;
+
+}
 
 if (riverGate == 0) {
 	riverClick.style.display = "none";
 } else {
 	riverClick.style.display = "block";
 }
+
+
 //functions
 
 function treeCut() {
@@ -47,8 +83,12 @@ function logCut() {
 
 
   function riverButton() {
-    var riverDisplay = document.getElementById("riverTravel");
     riverDisplay.style.display = "block";
-    var forestDisplay = document.getElementById("forestSection");
     forestDisplay.style.display = "none";
-  }
+}
+ 
+
+function forestButton() {
+    riverDisplay.style.display = "none";
+    forestDisplay.style.display = "block";
+}
