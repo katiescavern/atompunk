@@ -22,9 +22,7 @@ button {
     padding: 10px 20px;
 }
 
-#sectionButtons {
-    text-align: center;
-}
+
 
 #riverTravel {
     display: none;
@@ -66,3 +64,12 @@ button {
     font-size: 24px;
     margin-top: 10px;
 }
+
+
+  #inventory {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding-right: 15px;
+    padding-left: 5px;
+  }

@@ -3,16 +3,22 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Atompunk || Forest</title>
+    <title>Atompunk</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>The Decayed Forest</h1>
-    <div id="sectionButtons">
-    </div>
+    <div id="sectionButtons"></div>
     <div id="riverTravel" style="display: none;">
-        <button id="forestClick" onclick="forestButton()">Decayed Forest</button>
+        <h1>The Lost River</h1>
+        <div id="riverLocations">
+            <h3>locations:</h3>
+            <div class="buttonContainer">
+                <button id="forestClick" onclick="forestButton()">Decayed Forest</button>
+                <button id="houseClick" onclick="riverToHouse()">Home</button>
+            </div>
+        </div>
         <div id="fishgame">
+            <h3>fishing</h3>
             <button id="startFish" onclick="fishGame()">start fishing</button>
             <button id="fishButton1" onclick="catchFish(this)">fish</button>
             <button id="fishButton2" onclick="catchFish(this)">fish</button>
@@ -21,8 +27,16 @@
         </div>
     </div>
     <div id="forestSection">
-        <button id="riverClick" onclick="riverButton()">Lost River</button>
+        <h1>The Decayed Forest</h1>
+        <div id="forestLocations">
+            <h3 id="forestLocationText" style="display: none;">locations:</h3>
+            <div class="buttonContainer">
+                <button id="riverClick" onclick="riverButton()">Lost River</button>
+                <button id="homeClick" onclick="forestToHouse()">Home</button>
+            </div>
+        </div>
         <div id="cuttingTrees">
+            <h3>actions:</h3>
             <button id="treeButton" onclick="treeCut()">cut down trees</button>
             <p id="logCount"></p>
         </div>
@@ -33,6 +47,50 @@
         <div id="warning">
             <p id="warningText"></p>
         </div>
+    </div>
+    <div id="houseMenu">
+        <h1>Home</h1>
+        <div id="houseLocations">
+            <h3>locations:</h3>
+            <button id="houseForest" onclick="houseToForest()">Decayed Forest</button>
+            <button id="houseRiver" onclick="houseToRiver()">Lost River</button>
+        </div>
+        <div id="rooms">
+            <h3>rooms:</h3>
+            <div class="buttonContainer">
+                <button id="backyardClick" onclick="houseToBackyard()">Backyard</button>
+                <button id="bedroomClick">Bedroom</button>
+            </div>
+        </div>
+    </div>
+    <div id="backyard">
+        <h1>The Backyard</h1>
+        <h3>locations:</h3>
+        <button id=BYtoHome onclick="backyardToHouse()">Home</button>
+        <h3>actions:</h3>
+        <button id="makeFire" onclick="fireMenu()">make fire</button>
+
+        <div id="fireClick">
+            <h3>enter wood</h3>
+            <button onclick="fireDecrease()"><</button>
+            <button id=fireWoodButton></button>
+            <button onclick="fireIncrease()">></button>
+            <h3>enter fish</h3>
+            <button onclick="fishDecrease()"><</button>
+            <button id=fishCookButton></button>
+            <button onclick="fishIncrease()">></button>
+            <div>
+                <button onclick="cook()">cook</button>
+            </div>
+    
+        
+        </div>
+    </div>
+    <div id="inventory">
+        <p id=invLogs></p>
+        <p id=invWood></p>
+        <p id=invFish></p>
+        <p id=invCookedFish></p>
     </div>
     <script src="atompunk.js"></script>
 </body>
