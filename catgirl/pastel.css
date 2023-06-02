@@ -1,0 +1,62 @@
+body {
+  background-color: #FFE8E8;
+  color: #4a4a4a;
+}
+
+a {
+  color: #ff8ac2;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #7B3F61;
+}
+
+button {
+  background-color: #E1B8CB;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+  #logo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-right: 5px;
+}
+
+#style {
+  background-color: #E1B8CB;
+  color: white;
+  border: none;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding-right: 2;
+  padding-bottom: 1;
+  border-radius: 5px;
+}
+
+#information {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+#mode {
+  background-color: #E1B8CB;
+  color: white;
+  border: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding-left: 2;
+  padding-bottom: 1;
+  border-radius: 5px;
+}

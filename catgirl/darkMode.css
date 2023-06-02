@@ -1,0 +1,49 @@
+body {
+  background-color: #2b2b2b;
+  color: #e6e6e6;
+}
+
+a {
+  color: #ff8ac2;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #d9b3c6;
+}
+
+button {
+  background-color: #b87f9e;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+#logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-right: 5px;
+}
+
+#style {
+  background-color: #b87f9e;
+  color: white;
+  border: none;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding-right: 2;
+  padding-bottom: 1;
+  border-radius: 5px;
+}
+#information {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
