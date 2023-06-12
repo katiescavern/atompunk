@@ -27,6 +27,10 @@
       </div>
         <p id="fishCounter"></p>
       </div>
+      <div id="stoneCollection">
+        <h3>stone collection</h3>
+        <button id="stoneMeUwU" onclick="collectStone()">Take stone</button>
+      </div>
     </div>
     <div id="forestSection">
       <h1>The Decayed Forest</h1>
@@ -45,9 +49,6 @@
       <div id="cuttingWood">
         <button id="logButton" onclick="logCut()"></button>
         <p id="woodCount"></p>
-      </div>
-      <div id="warning">
-        <p id="warningText"></p>
       </div>
     </div>
     <div id="houseMenu">
@@ -116,7 +117,7 @@
             <p>wood cutting rate: 2</p>
             <h4>description</h4>
             <p>a stone axe, nothing special about it</p>
-            <button>craft</button>
+            <button onclick="craftStoneAxe()">craft</button>
           </div>
           <button onclick="woodenSpearInfo()">wooden spear</button>
           <div id="craftWoodenSpear" class="itemInfo">
@@ -130,16 +131,20 @@
             <p>attack: 2</p>
             <h4>description</h4>
             <p>a wooden spear, better than your fists</p>
-            <button>craft</button>
+            <button onclick="craftWoodenSpear()">craft</button>
           </div>
         </div>
       </div>
     </div>
+      <div id="warning">
+        <p id="warningText"></p>
+      </div>
     <div id="inventory">
       <p id=invLogs></p>
       <p id=invWood></p>
       <p id=invFish></p>
       <p id=invCookedFish></p>
+      <p id="invStone"></p>
     </div>
     <div id="clock"></div>
     <script src="atompunk.js"></script>

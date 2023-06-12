@@ -8,6 +8,10 @@ var fishInFireplace = 0;
 var cookedFish = 0;
 var bedGate = 0;
 var randomFish = 3;
+var stoneCount = 0;
+var woodAxeCount = 0;
+var axeDur = 0;
+var spearCount;
 //elements
 var logButton = document.getElementById("logButton");
 var riverClick = document.getElementById("riverClick");
@@ -34,6 +38,7 @@ var fishButtonDisplay = document.getElementById("FishingButtons");
 var itemInfoDisplay = document.getElementsByClassName("itemInfo");
 var stoneAxeInfoDisplay = document.getElementById("stoneAxeInfoDiv");
 var woodenSpearInfoDisplay = document.getElementById("craftWoodenSpear");
+var stoneCollectDisplay = document.getElementById("stoneCollection");
 //displays
 fireDisplay.style.display = "none";
 backyardDisplay.style.display = "none";
@@ -45,6 +50,7 @@ craftingDisplay.style.display = "none";
 craftClick.style.display = "none";
 toolElement.style.display = "none";
 fishButtonDisplay.style.display = "none";
+stoneCollectDisplay.style.display = "none";
 
 
 //inventory
@@ -52,6 +58,7 @@ var invLogElement = document.getElementById("invLogs");
 var invWoodElement = document.getElementById("invWood");
 var invFishElement = document.getElementById('invFish');
 var invCookedFishElement = document.getElementById("invCookedFish");
+var invStoneElement = document.getElementById("invStone");
 
 
 //fish spam
@@ -143,7 +150,11 @@ function treeCut() {
 	logButton.style.display = "initial";
 	logButton.textContent = ("cut logs");
 	invLogElement.textContent = ("Logs: " + logCountVar);
-	
+	if (axeDur > 0){
+		axeDur= axeDur-1;
+	} else if (axeDur == 0){
+		woodCollectingRate = 1;
+	}
 }
 
 function logCut() {
@@ -161,31 +172,26 @@ function logCut() {
 		logElement.textContent = (`number of logs: ${logCountVar}`);
 		invWoodElement.textContent = (`Wood: ${woodCountVar}`);
 		invLogElement.textContent = ("Logs: " + logCountVar);
+		if (axeDur > 0){
+			axeDur= axeDur-1;
+	} else if (axeDur == 0){
+			woodCollectingRate = 1;
+	}
 
 	} else {
 		warningElement.textContent = "you don't have enough logs";
-	}
-
-
-
-	
+	}	
 }
 
 //travel
-
-
   function riverButton() {
     riverDisplay.style.display = "block";
     forestDisplay.style.display = "none";
 }
- 
-
 function forestButton() {
     riverDisplay.style.display = "none";
     forestDisplay.style.display = "block";
 }
-
-
 function forestToHouse(){
 	forestDisplay.style.display = "none";
 	houseDisplay.style.display = "block";
@@ -232,6 +238,10 @@ function bedroomToHouse(){
 function houseToCraftingRoom(){
 	houseDisplay.style.display = "none";
 	craftingDisplay.style.display = "block";
+	if (houseGate == 2){
+		houseGate = 3;
+		stoneCollectDisplay.style.display = "block";
+	}
 }
 function craftingRoomToHouse(){
 	craftingDisplay.style.display = "none";
@@ -354,5 +364,37 @@ function woodenSpearInfo(){
 		woodenSpearInfoDisplay.style.display = "none";
 	}
 }
+function collectStone(){
+	stoneCount++;
+	invStoneElement.textContent = ("stones: " + stoneCount);
+}
 
-
+function craftStoneAxe(){
+	if (woodCountVar > 0 && stoneCount > 4){
+		woodAxeCount++;
+		woodCountVar = woodCountVar-1;
+		stoneCount = stoneCount-5;
+		axeDur = axeDur + 25;
+		invWoodElement.textContent = "wood: " + woodCountVar;
+		invStoneElement.textContent = "stone: " +stoneCount;
+		if (woodCollectingRate < 2){
+			woodCollectingRate = 2;
+		}
+		if (logCuttingRate < 2){
+			logCuttingRate = 2;
+		}
+	} else if (woodCountVar == 0 && stoneCount < 5){
+		warningElement.textContent = "not enough wood or stone";
+	} else if (woodCountVar == 0){
+		warningElement.textContent = "not enough wood";
+	} else if (stoneCount < 5){
+		warningElement.textContent = "not enough stone";
+	}
+}
+function craftWoodenSpear(){
+	if (woodCountVar > 4 && stoneCount > 0){
+		woodCountVar = woodCountVar-5;
+		stoneCount=stoneCount-1;
+		stoneCount = stoneCount+1;
+	}
+}
