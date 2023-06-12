@@ -24,7 +24,7 @@ button {
 
 
 
-#riverTravel {
+#riverTravel { 
     display: none;
 }
 
@@ -66,10 +66,60 @@ button {
 }
 
 
-  #inventory {
-    position: fixed;
+#inventory {
+    position: absolute;
     bottom: 0;
     right: 0;
     padding-right: 15px;
     padding-left: 5px;
   }
+
+
+.craftTools {
+  position: relative;
+}
+
+.itemInfo {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 300px;
+  background-color: #3333;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.itemInfo h1 {
+  font-size: 20px;
+  margin-top: 0;
+}
+
+.itemInfo img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.itemInfo h3,
+.itemInfo h4,
+.itemInfo p {
+  margin: 0;
+  padding: 0;
+}
+
+.itemInfo h3 {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.itemInfo h4 {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.itemInfo p {
+  margin-top: 5px;
+  font-size: 12px;
+}
+

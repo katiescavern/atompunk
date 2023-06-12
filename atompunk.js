@@ -2,14 +2,14 @@ var woodCountVar = 0;
 var logCountVar = 0;
 var logCuttingRate = 1;
 var woodCollectingRate = 1;
-var warningElement = document.getElementById('warningText');
 var riverGate = 0;
 var woodInFireplace = 0;
 var fishInFireplace = 0;
 var cookedFish = 0;
+var bedGate = 0;
+var randomFish = 3;
 //elements
 var logButton = document.getElementById("logButton");
-logButton.style.display = "none";
 var riverClick = document.getElementById("riverClick");
 var forestClick = document.getElementById("forestClick");
 var forestDisplay = document.getElementById("forestSection");
@@ -19,14 +19,34 @@ var sectionButtons = document.getElementById("sectionButtons");
 var houseClick = document.getElementById("houseClick");
 var homeClick = document.getElementById("homeClick");
 var forestLocationText = document.getElementById("forestLocationText");
-houseDisplay.style.display = "none";
 var backyardDisplay = document.getElementById("backyard");
 var bedroomButton = document.getElementById("bedroomClick");
-backyardDisplay.style.display = "none";
 var fireDisplay = document.getElementById("fireClick");
-fireDisplay.style.display = "none";
 var fireCountDisplayElement = document.getElementById("fireWoodButton");
 var fishCountFireElement = document.getElementById("fishCookButton");
+var warningElement = document.getElementById('warningText');
+var bedroomDisplay = document.getElementById("Bedroom");
+var craftingClick = document.getElementById("craftingClick");
+var craftingDisplay = document.getElementById("craftingRoom");
+var openCraftDisplay = document.getElementById("craftClick");
+var toolElement = document.getElementById("craftTools");
+var fishButtonDisplay = document.getElementById("FishingButtons");
+var itemInfoDisplay = document.getElementsByClassName("itemInfo");
+var stoneAxeInfoDisplay = document.getElementById("stoneAxeInfoDiv");
+var woodenSpearInfoDisplay = document.getElementById("craftWoodenSpear");
+//displays
+fireDisplay.style.display = "none";
+backyardDisplay.style.display = "none";
+houseDisplay.style.display = "none";
+logButton.style.display = "none";
+bedroomDisplay.style.display = "none";
+craftingClick.style.display = "none";
+craftingDisplay.style.display = "none";
+craftClick.style.display = "none";
+toolElement.style.display = "none";
+fishButtonDisplay.style.display = "none";
+
+
 //inventory
 var invLogElement = document.getElementById("invLogs");
 var invWoodElement = document.getElementById("invWood");
@@ -45,25 +65,52 @@ var fishCounter = document.getElementById("fishCounter");
 var houseGate = 0;
 
 // Function to catch the fish
-function catchFish(button) {
-  // Disable fish buttons after a fish is caught
-  fishButton1.disabled = true;
-  fishButton2.disabled = true;
-  fishButton3.disabled = true;
-
-
-  // Check if the clicked button contains the fish
-  if (button.id === "fishButton" + (Math.floor(Math.random() * 3) + 1)) {
-    fishCount++;
-    fishCounter.textContent = "Fish Count: " + fishCount;
-    invFishElement.textContent = ("Fish: " + fishCount);
-  }
-
-  // Enable fish buttons again
-  fishButton1.disabled = false;
-  fishButton2.disabled = false;
-  fishButton3.disabled = false;
-
+function catchFish(x) {
+	if (x == 0) {
+		randomFish = Math.floor(Math.random() * 3);
+		fishButtonDisplay.style.display = "block";
+		if (randomFish == 0) {
+			fishButton1.textContent = "fish!";
+			fishButton2.textContent = "water";
+			fishButton3.textContent = "water";
+		} else if (randomFish == 1){
+			fishButton1.textContent = "water";
+			fishButton2.textContent = "fish!";
+			fishButton3.textContent = "water";
+		} else if (randomFish == 2){
+			fishButton1.textContent = "water";
+			fishButton2.textContent = "water";
+			fishButton3.textContent = "fish!";
+		}
+	}
+		if (x == 1){
+			if (randomFish == 0){
+				fishCount++;
+				fishButton1.textContent = "water";
+				randomFish = 4;
+				invFishElement.textContent = ("fish: " + fishCount);
+				catchFish(0);
+			}
+		}
+		if(x == 2){
+			if (randomFish == 1){
+				fishCount++;
+				fishButton2.textContent = "water";
+				randomFish = 4;
+				invFishElement.textContent = ("fish: " + fishCount);
+				catchFish(0);
+			}
+		}
+		if (x == 3){
+			if(randomFish == 2){
+				fishCount++;
+				fishButton3.textContent = "water";
+				randomFish = 4;
+				invFishElement.textContent = ("fish: " + fishCount);
+				catchFish(0);
+			}
+		}
+		
   if (fishCount >= 5) {
   	houseGate = 1;
   	homeClick.style.display = "block";
@@ -87,7 +134,7 @@ if (houseGate == 0) {
 	homeClick.style.display = "block";
 }
 
-//functions
+//foresst
 
 function treeCut() {
 	var logElement = document.getElementById("logCount");
@@ -124,6 +171,8 @@ function logCut() {
 	
 }
 
+//travel
+
 
   function riverButton() {
     riverDisplay.style.display = "block";
@@ -137,7 +186,6 @@ function forestButton() {
 }
 
 
-//all below this will be like house stuff-
 function forestToHouse(){
 	forestDisplay.style.display = "none";
 	houseDisplay.style.display = "block";
@@ -170,6 +218,26 @@ function backyardToHouse(){
 	backyardDisplay.style.display = "none";
 	houseDisplay.style.display = "block";
 }
+
+function houseToBedroom(){
+	houseDisplay.style.display = "none";
+	bedroomDisplay.style.display = "block";
+}
+
+function bedroomToHouse(){
+	bedroomDisplay.style.display = "none";
+	houseDisplay.style.display = "block";
+}
+
+function houseToCraftingRoom(){
+	houseDisplay.style.display = "none";
+	craftingDisplay.style.display = "block";
+}
+function craftingRoomToHouse(){
+	craftingDisplay.style.display = "none";
+	houseDisplay.style.display = "block";
+}
+//backyard
 function fireMenu() {
 	if (fireDisplay.style.display == "none") {
 		fireDisplay.style.display = "block";
@@ -209,7 +277,7 @@ function fishDecrease(){
 function cook(){
 	if (fishInFireplace < woodInFireplace) {
 		cookedFish = cookedFish + fishInFireplace;
-		fishCount = fishCount - fishInFireplace
+		fishCount = fishCount - fishInFireplace;
 		woodInFireplace = woodInFireplace - fishInFireplace;
 		woodCountVar = woodCountVar - fishInFireplace;
 		fishInFireplace = 0;
@@ -237,4 +305,54 @@ function cook(){
 	invCookedFishElement.textContent = ("Cooked fish: " + cookedFish);
 	invFishElement.textContent = ("Fish: " + fishCount);
 	invWoodElement.textContent = ("Wood: " + woodCountVar);
+	if (cookedFish >= 5) {
+		houseGate = 2;
+		bedroomButton.style.display = ("block");
+	}
 }
+
+function sleep() {
+ //put time stuff here katie
+	bedGate = 1;
+	craftingClick.style.display = "block";
+}
+function openCraftingMenu(){
+	if (craftClick.style.display == "none"){
+		craftClick.style.display = "block";
+	} else {
+		craftClick.style.display = "none";
+	}
+}
+function toolCraft(){
+	if (toolElement.style.display == "none"){
+		toolElement.style.display = "block";
+	for (var i = 0; i < itemInfoDisplay.length; i++) {
+  itemInfoDisplay[i].style.display = "none";
+	}
+	} else {
+		toolElement.style.display = "none";
+	}
+}
+function stoneAxeInfo(){
+	for (var i = 0; i < itemInfoDisplay.length; i++) {
+  itemInfoDisplay[i].style.display = "none";
+	}
+	if (stoneAxeInfoDisplay.style.display == "none"){
+		stoneAxeInfoDisplay.style.display = "block";}
+	else if (stoneAxeInfoDisplay.style.display == "block"){
+			stoneAxeInfoDisplay.style.display = "none";
+		}
+		}
+	
+function woodenSpearInfo(){
+	for (var i = 0; i < itemInfoDisplay.length; i++) {
+  itemInfoDisplay[i].style.display = "none";
+	}
+	if (woodenSpearInfoDisplay.style.display == "none"){
+		woodenSpearInfoDisplay.style.display = "block";
+	} else if (woodenSpearInfoDisplay.style.display == "block"){
+		woodenSpearInfoDisplay.style.display = "none";
+	}
+}
+
+

@@ -1,97 +1,147 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Atompunk</title>
     <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+  </head>
+  <body>
     <div id="sectionButtons"></div>
     <div id="riverTravel" style="display: none;">
-        <h1>The Lost River</h1>
-        <div id="riverLocations">
-            <h3>locations:</h3>
-            <div class="buttonContainer">
-                <button id="forestClick" onclick="forestButton()">Decayed Forest</button>
-                <button id="houseClick" onclick="riverToHouse()">Home</button>
-            </div>
+      <h1>The Lost River</h1>
+      <div id="riverLocations">
+        <h3>locations:</h3>
+        <div>
+          <button id="forestClick" onclick="forestButton()">Decayed Forest</button>
+          <button id="houseClick" onclick="riverToHouse()">Home</button>
         </div>
-        <div id="fishgame">
-            <h3>fishing</h3>
-            <button id="startFish" onclick="fishGame()">start fishing</button>
-            <button id="fishButton1" onclick="catchFish(this)">fish</button>
-            <button id="fishButton2" onclick="catchFish(this)">fish</button>
-            <button id="fishButton3" onclick="catchFish(this)">fish</button>
-            <p id="fishCounter"></p>
-        </div>
+      </div>
+      <div id="fishgame">
+        <h3>fishing</h3>
+        <button id="startFish" onclick="catchFish(0)">start fishing</button>
+        <div id="FishingButtons">
+          <button id="fishButton1" onclick="catchFish(1)">fish</button>
+          <button id="fishButton2" onclick="catchFish(2)">fish</button>
+          <button id="fishButton3" onclick="catchFish(3)">fish</button>
+      </div>
+        <p id="fishCounter"></p>
+      </div>
     </div>
     <div id="forestSection">
-        <h1>The Decayed Forest</h1>
-        <div id="forestLocations">
-            <h3 id="forestLocationText" style="display: none;">locations:</h3>
-            <div class="buttonContainer">
-                <button id="riverClick" onclick="riverButton()">Lost River</button>
-                <button id="homeClick" onclick="forestToHouse()">Home</button>
-            </div>
+      <h1>The Decayed Forest</h1>
+      <div id="forestLocations">
+        <h3 id="forestLocationText" style="display: none;">locations:</h3>
+        <div>
+          <button id="riverClick" onclick="riverButton()">Lost River</button>
+          <button id="homeClick" onclick="forestToHouse()">Home</button>
         </div>
-        <div id="cuttingTrees">
-            <h3>actions:</h3>
-            <button id="treeButton" onclick="treeCut()">cut down trees</button>
-            <p id="logCount"></p>
-        </div>
-        <div id="cuttingWood">
-            <button id="logButton" onclick="logCut()"></button>
-            <p id="woodCount"></p>
-        </div>
-        <div id="warning">
-            <p id="warningText"></p>
-        </div>
+      </div>
+      <div id="cuttingTrees">
+        <h3>actions:</h3>
+        <button id="treeButton" onclick="treeCut()">cut down trees</button>
+        <p id="logCount"></p>
+      </div>
+      <div id="cuttingWood">
+        <button id="logButton" onclick="logCut()"></button>
+        <p id="woodCount"></p>
+      </div>
+      <div id="warning">
+        <p id="warningText"></p>
+      </div>
     </div>
     <div id="houseMenu">
-        <h1>Home</h1>
-        <div id="houseLocations">
-            <h3>locations:</h3>
-            <button id="houseForest" onclick="houseToForest()">Decayed Forest</button>
-            <button id="houseRiver" onclick="houseToRiver()">Lost River</button>
+      <h1>Home</h1>
+      <div id="houseLocations">
+        <h3>locations:</h3>
+        <button id="houseForest" onclick="houseToForest()">Decayed Forest</button>
+        <button id="houseRiver" onclick="houseToRiver()">Lost River</button>
+      </div>
+      <div id="rooms">
+        <h3>rooms:</h3>
+        <div>
+          <button id="backyardClick" onclick="houseToBackyard()">Backyard</button>
+          <button id="bedroomClick" onclick="houseToBedroom()">Bedroom</button>
+          <button id="craftingClick" onclick="houseToCraftingRoom()">Crafting Room</button>
         </div>
-        <div id="rooms">
-            <h3>rooms:</h3>
-            <div class="buttonContainer">
-                <button id="backyardClick" onclick="houseToBackyard()">Backyard</button>
-                <button id="bedroomClick">Bedroom</button>
-            </div>
-        </div>
+      </div>
     </div>
     <div id="backyard">
-        <h1>The Backyard</h1>
-        <h3>locations:</h3>
-        <button id=BYtoHome onclick="backyardToHouse()">Home</button>
-        <h3>actions:</h3>
-        <button id="makeFire" onclick="fireMenu()">make fire</button>
-
-        <div id="fireClick">
-            <h3>enter wood</h3>
-            <button onclick="fireDecrease()"><</button>
+      <h1>The Backyard</h1>
+      <h3>locations:</h3>
+      <button id=BYtoHome onclick="backyardToHouse()">Home</button>
+      <h3>actions:</h3>
+      <button id="makeFire" onclick="fireMenu()">make fire</button>
+      <div id="fireClick">
+        <h3>enter wood</h3>
+        <button onclick="fireDecrease()">
+          < </button>
             <button id=fireWoodButton></button>
             <button onclick="fireIncrease()">></button>
             <h3>enter fish</h3>
-            <button onclick="fishDecrease()"><</button>
-            <button id=fishCookButton></button>
-            <button onclick="fishIncrease()">></button>
-            <div>
-                <button onclick="cook()">cook</button>
-            </div>
-    
-        
+            <button onclick="fishDecrease()">
+              < </button>
+                <button id=fishCookButton></button>
+                <button onclick="fishIncrease()">></button>
+                <div>
+                  <button onclick="cook()">cook</button>
+                </div>
+      </div>
+    </div>
+    <div id=Bedroom>
+      <h1>Bedroom</h1>
+      <h3>rooms</h3>
+      <button onclick="bedroomToHouse()">House</button>
+      <h3>actions:</h3>
+      <button onclick="sleep()">sleep</button>
+    </div>
+    <div id="craftingRoom">
+      <h1>Crafting room</h1>
+      <h3>locations:</h3>
+      <button onclick="craftingRoomToHouse()">House</button>
+      <h3>actions:</h3>
+      <button onclick="openCraftingMenu()">craft</button>
+      <div id="craftClick">
+        <button id="toolCraftClick" onclick="toolCraft()">tools</button>
+        <div id="craftTools">
+          <button id="craftStoneAxe" onclick="stoneAxeInfo()">Stone Axe</button>
+          <div id="stoneAxeInfoDiv" class="itemInfo">
+            <h1>stone axe</h1>
+            <img src=>
+            <h3>info:</h3>
+            <h4>materials:</h4>
+            <p>stones: 5</p>
+            <p>wood: 1</p>
+            <h4>stats</h4>
+            <p>wood cutting rate: 2</p>
+            <h4>description</h4>
+            <p>a stone axe, nothing special about it</p>
+            <button>craft</button>
+          </div>
+          <button onclick="woodenSpearInfo()">wooden spear</button>
+          <div id="craftWoodenSpear" class="itemInfo">
+            <h1>wooden spear</h1>
+            <img src=>
+            <h3>info:</h3>
+            <h4>materials:</h4>
+            <p>wood: 5</p>
+            <p>stone: 1</p>
+            <h4>stats</h4>
+            <p>attack: 2</p>
+            <h4>description</h4>
+            <p>a wooden spear, better than your fists</p>
+            <button>craft</button>
+          </div>
         </div>
+      </div>
     </div>
     <div id="inventory">
-        <p id=invLogs></p>
-        <p id=invWood></p>
-        <p id=invFish></p>
-        <p id=invCookedFish></p>
+      <p id=invLogs></p>
+      <p id=invWood></p>
+      <p id=invFish></p>
+      <p id=invCookedFish></p>
     </div>
+    <div id="clock"></div>
     <script src="atompunk.js"></script>
-</body>
+  </body>
 </html>
